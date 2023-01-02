@@ -31,7 +31,7 @@
 </distributionManagement>
 
 <scm>
-<connection>scm:git:git@github.com:Juggernautishere/migration-devops-ci.git</connection>
+<connection>scm:git:git@github.com:HimanshuChauhan0/migration-devops-ci.git</connection>
 <developerConnection>scm:git:git@github.com:krishnamurthypradeep/migration-devops-ci.git</developerConnection>
 <url>git@github.com:krishnamurthypradeep/migration-devops-ci.git</url>
 <tag>v1.0.0</tag>

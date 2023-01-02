@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    
+    def mvnHome
+
+    stages {
+        stage('Prepare') {
+            steps {
+                git url: 'git@github.com:Juggernautishere/migration-devops-ci.git', branch:'develop'
+                mvnHome = tool 'mvn'
+            
+            }
+        }
+         stage('Build') {
+            steps {
+            if(isUnix()) {
+                sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+                
+            }
+            else {
+            bat(/"${mvnHome}/bin/mvn" -Dmaven.test.failure.ignore clean package/)
+            
+        }
+        }
+        }
+        stage('Unit Test') {
+            steps {
+            
+            junit '**/target/surefire-reports/test-*.xml'
+            }
+        }
+    }
+        
+        }
+        
+        
+        
