@@ -8,7 +8,7 @@ node {
   
         stage('Prepare') {
             
-              git url: 'https://github.com/Juggernautishere/migration-devops-ci.git', branch: 'develop'
+              git url: 'https://github.com/Juggernautishere/migration-devops-ci.git', branch:'master'
               mvnHome = tool 'mvn' 
             
         }
@@ -23,6 +23,7 @@ node {
               }
             
         }
+        
         
         
         stage('Unit Test'){
@@ -42,8 +43,24 @@ node {
               }
             
         
-        
-        
+        }
+     stage('SonarQube Analysis') {
+
+
+
+	if(isUnix()) {
+
+sh "'${mvnHome}/bin/mvn' sonar:sonar"
+
+}
+
+else {
+
+bat(/"${mvnHome}\bin\mvn" sonar:sonar /)
+
+}
+
+}   
     }
     
 }
