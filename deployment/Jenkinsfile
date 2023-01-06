@@ -61,6 +61,30 @@ bat(/"${mvnHome}\bin\mvn" sonar:sonar /)
 }
 
 }   
+
+stage('Docker Build'){
+
+if(isUnix()) {
+
+sh "docker-compose up -d"
+
+}
+
+else {
+
+bat("docker-compose up -d")
+
+}
+
+
+
+}
+
+
+
+
+
+
     }
     
 }
