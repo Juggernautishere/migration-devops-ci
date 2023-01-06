@@ -72,7 +72,7 @@ sh "docker-compose up -d"
 
 else {
 
-bat("docker compose -f docker-compose.yml run")
+bat("docker compose -f docker-compose.yml run web")
 
 }
 
